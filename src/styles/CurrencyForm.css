@@ -1,0 +1,16 @@
+.currencyForm {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.currencyForm label {
+    font-weight: bold;
+}
+
+.currencyForm select {
+    color: green;
+    background-color: white;
+    margin-left: 10px;
+}
