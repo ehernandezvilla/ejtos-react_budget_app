@@ -1,12 +1,13 @@
-import { useState } from "react";
-import '../styles/CurrencyForm.css'
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import '../styles/CurrencyForm.css';
 
 function CurrencyForm() {
-    const [currency, setCurrency] = useState('£');
+    const { currency, updateCurrency } = useContext(AppContext);
 
     const handleCurrencyChange = (e) => {
         const newCurrency = e.target.value;
-        setCurrency(newCurrency);
+        updateCurrency(newCurrency);
     };
 
     return (

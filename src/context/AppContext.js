@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer} from 'react';
 
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
@@ -60,7 +60,6 @@ export const AppReducer = (state, action) => {
         case 'SET_BUDGET':
             const totalExpenses = state.expenses.reduce((acc, curr) => acc + curr.cost, 0);
                 if (action.payload < totalExpenses) {
-                console.error('Attempted to set budget lower than total expenses.');
                 // This prevents the budget from being set lower than total expenses,
                 // adhering to your application logic without directly affecting the UI.
                     return state;
@@ -106,6 +105,10 @@ export const AppProvider = (props) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
     let remaining = 0;
 
+    const updateCurrency = (newCurrency) => {
+        dispatch({type: 'CHG_CURRENCY', payload: newCurrency})
+    };
+
     if (state.expenses) {
             const totalExpenses = state.expenses.reduce((total, item) => {
             return (total = total + item.cost);
@@ -120,7 +123,8 @@ export const AppProvider = (props) => {
                 budget: state.budget,
                 remaining: remaining,
                 dispatch,
-                currency: state.currency
+                currency: state.currency,
+                updateCurrency: updateCurrency
             }}
         >
             {props.children}
