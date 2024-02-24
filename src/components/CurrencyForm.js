@@ -12,7 +12,7 @@ function CurrencyForm() {
     return (
         <>
             <form className="currencyForm">
-                <label htmlFor="currency">Choose a currency:</label>
+                <label htmlFor="currency">Currency:</label>
                 <select id="currency" name="currency" value={currency} onChange={handleCurrencyChange}>
                     <option value="£">£ Pound</option>
                     <option value="$">$ Dollar</option>
